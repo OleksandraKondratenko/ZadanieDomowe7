@@ -16,34 +16,12 @@ namespace ZadanieDomowe7
 
         public static int FindMinElementOfArray(int[] array)
         {
-            ValidateArray(array);
-            int min = array[0];
-
-            for (int i = 1; i < array.Length; i++)
-            {
-                if (min > array[i])
-                {
-                    min = array[i];
-                }
-            }
-
-            return min;
+            return array[FindIndexMinElementOfArray(array)];
         }
 
         public static int FindMaxElementOfArray(int[] array)
         {
-            ValidateArray(array);
-            int max = array[0];
-
-            for (int i = 1; i < array.Length; i++)
-            {
-                if (max < array[i])
-                {
-                    max = array[i];
-                }
-            }
-
-            return max;
+            return array[FindIndexMaxElementOfArray(array)];
         }
 
         public static int FindIndexMinElementOfArray(int[] array)
@@ -85,7 +63,7 @@ namespace ZadanieDomowe7
 
             for (int i = 0; i < array.Length; i++)
             {
-                if (i % 2 != 0)
+                if (i % 2 == 1)
                 {
                     sum += array[i];
                 }
@@ -97,13 +75,12 @@ namespace ZadanieDomowe7
         public static int[] ReverseArray(int[] array)
         {
             ValidateArray(array);
-            int temp = 0;
             int index;
 
             for (int i = 0; i < array.Length / 2; i++)
             {
                 index = array.Length - i - 1;
-                VariablesHelper.Swap( ref array[i], ref array[index]);
+                VariablesHelper.Swap(ref array[i], ref array[index]);
             }
 
             return array;

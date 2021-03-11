@@ -33,7 +33,7 @@ namespace ZadanieDomowe7XUnitTests
         [InlineData(-5, 6, 2,6,2,-5)]
         public void SortThreeNumberIncreasing_WhenTestIsPassed_ShouldBeCalculate(int num1, int num2, int num3, int expectedNum1, int expectedNum2, int expectedNum3)
         {
-            ConditionStatement.SortThreeNumberIncreasing(ref num1, ref num2, ref num3);
+            ConditionStatement.SortNumbersByAscending(ref num1, ref num2, ref num3);
             Assert.Equal(expectedNum1, num1);
             Assert.Equal(expectedNum2, num2);
             Assert.Equal(expectedNum3, num3);

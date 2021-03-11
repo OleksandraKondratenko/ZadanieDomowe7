@@ -49,40 +49,40 @@ namespace ZadanieDomowe7
             return result;
         }
 
-        public static void SortThreeNumberIncreasing(ref int max, ref int mid, ref int min)
+        public static void SortNumbersByAscending(ref int a, ref int b, ref int c)
         {
             int temp;
 
-            if (max < mid && max < min)
+            if (a < b && a < c)
             {
-                temp = min;
-                min = max;
-                max = mid > temp ? mid : temp;
-                mid = mid > temp ? temp : mid;
+                temp = c;
+                c = a;
+                a = b > temp ? b : temp;
+                b = b > temp ? temp : b;
             }
-            else if (mid < max && mid < min)
+            else if (b < a && b < c)
             {
-                temp = min;
-                min = mid;
-                max = max > temp ? max : temp;
-                mid = max > temp ? temp : max;
+                temp = c;
+                c = b;
+                a = a > temp ? a : temp;
+                b = a > temp ? temp : a;
             }
             else
             {
-                temp = max;
-                max = temp > mid ? temp : mid;
-                mid = temp > mid ? mid : temp;
+                temp = a;
+                a = temp > b ? temp : b;
+                b = temp > b ? b : temp;
             }
         }
 
         static public double[] QuadraticEquation(int a, int b, int c)
         {
-            double[] result;
             if (a == 0)
             {
                 throw new Exception("Квадратного уравнения не существует");
             }
 
+            double[] result;
             double d = b * b - 4 * a * c;
 
             if (d > 0)
@@ -108,7 +108,7 @@ namespace ZadanieDomowe7
             return result;
         }
 
-        static public string ConvertNumberToString(int number)
+        public static string ConvertNumberToString(int number)
         {
             string result;
 
@@ -117,13 +117,13 @@ namespace ZadanieDomowe7
                 int a = number / 10;
                 int b = number % 10;
 
-                if (b == 0)
+                if (b != 0)
                 {
-                    result = Dozen(a);
+                    result = $"{Dozen(a)}{Units(b)}";
                 }
                 else
                 {
-                    result = $"{Dozen(a)}{Units(b)}";
+                    result = Dozen(a);
                 }
             }
             else if (number >= 10 && number < 20)

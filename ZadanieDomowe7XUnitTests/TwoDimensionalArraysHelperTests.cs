@@ -8,8 +8,8 @@ namespace ZadanieDomowe7XUnitTests
     {
 
         [Theory]
-        [MemberData("DataFindMinElementOfArray")]
-        public void FindMinElementOfArray_WhenTestPassed(int [,] array, int expected)
+        [MemberData(nameof(DataFindMinElementOfArray))]
+        public void FindMinElementOfArray_WhenIsPassed_ShouldBeCalculated(int [,] array, int expected)
         {
             int result =TwoDimensionalArraysHelper.FindMinElementOfArray(array);
             Assert.Equal(expected, result);
@@ -21,8 +21,8 @@ namespace ZadanieDomowe7XUnitTests
         }
 
         [Theory]
-        [MemberData("DataFindMaxElementOfArray")]
-        public void FindMaxElementOfArray_WhenTestPassed(int[,] array, int expected)
+        [MemberData(nameof(DataFindMaxElementOfArray))]
+        public void FindMaxElementOfArray_WhenIsPassed_ShouldBeCalculate(int[,] array, int expected)
         {
             int result = TwoDimensionalArraysHelper.FindMaxElementOfArray(array);
             Assert.Equal(expected, result);
@@ -34,8 +34,8 @@ namespace ZadanieDomowe7XUnitTests
         }
 
         [Theory]
-        [MemberData("DataFindIndexMinElementOfArray")]
-        public void FindIndexMinElementOfArray(int[,] array, (int,int) expected)
+        [MemberData(nameof(DataFindIndexMinElementOfArray))]
+        public void FindIndexMinElementOfArray_WhenIsPassed_ShouldBeCalculate(int[,] array, (int,int) expected)
         {
             (int,int) result = TwoDimensionalArraysHelper.FindIndexMinElementOfArray(array);
             Assert.Equal(expected, result);
@@ -47,8 +47,8 @@ namespace ZadanieDomowe7XUnitTests
         }
 
         [Theory]
-        [MemberData("DataFindIndexMaxElementOfArray")]
-        public void FindMaxIndexElementOfArray_WhenTestPassed(int[,] array, (int,int) expected)
+        [MemberData(nameof(DataFindIndexMaxElementOfArray))]
+        public void FindMaxIndexElementOfArray_WhenIsPassed_ShouldBeCalculate(int[,] array, (int,int) expected)
         {
             (int,int) result = TwoDimensionalArraysHelper.FindIndexMaxElementOfArray(array);
             Assert.Equal(expected, result);
@@ -60,8 +60,8 @@ namespace ZadanieDomowe7XUnitTests
         }
 
         [Theory]
-        [MemberData("DataCompareWithNeithbours")]
-        public void CompareWithNeithbours_WhenTestPassed(int[,] array,  int expected)
+        [MemberData(nameof(DataCompareWithNeithbours))]
+        public void CompareWithNeithbours_WhenIsPassed_ShouldBeCalculate(int[,] array,  int expected)
         {
             int result = TwoDimensionalArraysHelper.CompareWithNeithbours(array);
             Assert.Equal(expected, result);
@@ -74,7 +74,7 @@ namespace ZadanieDomowe7XUnitTests
 
         [Theory]
         [MemberData(nameof(DataMirrorViewOfArray))]
-        public void MirrorViewOfArray_WhenTestPassed(int[,] array, int[,] expected)
+        public void MirrorViewOfArray_WhenIsPassed_ShouldBeNerOrder(int[,] array, int[,] expected)
         {
             int[,] result = TwoDimensionalArraysHelper.MirrorViewOfArray(array);
             Assert.Equal(expected, result);

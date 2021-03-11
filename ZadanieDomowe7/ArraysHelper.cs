@@ -13,6 +13,7 @@ namespace ZadanieDomowe7
                 throw new ArgumentException("You are stupid");
             }
         }
+
         public static int FindMinElementOfArray(int[] array)
         {
             ValidateArray(array);
@@ -49,12 +50,11 @@ namespace ZadanieDomowe7
         {
             ValidateArray(array);
             int minIndex = 0;
-            int min = array[0];
+
             for (int i = 1; i < array.Length - 1; i++)
             {
-                if (min > array[i])
+                if (array[minIndex] > array[i])
                 {
-                    min = array[i];
                     minIndex = i;
                 }
             }
@@ -66,13 +66,11 @@ namespace ZadanieDomowe7
         {
             ValidateArray(array);
             int maxIndex = 0;
-            int max = array[0];
 
             for (int i = 1; i < array.Length; i++)
             {
-                if (max < array[i])
+                if (array[maxIndex] < array[i])
                 {
-                    max = array[i];
                     maxIndex = i;
                 }
             }
@@ -105,9 +103,7 @@ namespace ZadanieDomowe7
             for (int i = 0; i < array.Length / 2; i++)
             {
                 index = array.Length - i - 1;
-                temp = array[i];
-                array[i] = array[index];
-                array[index] = temp;
+                VariablesHelper.Swap( ref array[i], ref array[index]);
             }
 
             return array;
@@ -120,7 +116,7 @@ namespace ZadanieDomowe7
 
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] % 2 != 0)
+                if (array[i] % 2 == 1)
                 {
                     count++;
                 }
@@ -146,9 +142,7 @@ namespace ZadanieDomowe7
 
             for (int i = 0; i < array.Length / 2; i++)
             {
-                temp = array[i];
-                array[i] = array[index];
-                array[index] = temp;
+                VariablesHelper.Swap(ref array[i], ref array[index]);
                 index++;
             }
 

@@ -8,13 +8,14 @@ namespace ZadanieDomowe7
         static public int Power(int num1, int num2)
         {
             int result = 1;
-            if (num2 == 0)
-            {
-                result = 1;
-            }
-            else if (num1 == 0)
+
+            if (num1 == 0)
             {
                 result = 0;
+            }
+            else if (num2 == 0)
+            {
+                result = 1;
             }
             else
             {
@@ -27,34 +28,44 @@ namespace ZadanieDomowe7
             return result;
         }
 
-        static public List<int> RemainderOfDivisionOnNumber(int num1)
+        static public int[] CountRemainderOfDivisionOnNumber(int num1)
         {
-            List<int> numbers = new List<int>();
+            int[] numbers;
+            int count = 0;
 
             for (int i = num1; i < 10; i++)
             {
                 if (i % num1 == 0)
                 {
-                    numbers.Add(i);
+                    ++count;
                 }
             }
 
+            numbers = new int[count];
+            count = 0;
+            for (int i = num1; i < 10; i++)
+            {
+                if (i % num1 == 0)
+                {
+                    numbers[count] = i;
+                    ++count;
+                }
+            }
             return numbers;
         }
 
         public static int СomparisonSquareOfNumberWithAnotherNumber(int num)
         {
-            int count = 1;
+            int count = 0;
 
-            while (count * count < num)
+            for (int i = 1; i*i < num; i++)
             {
-                count++;
+                ++count;
             }
-
-            return count-1;
+            return count;
         }
 
-        static public int TheBiggestDivider(int num)
+            public static  int TheBiggestDivider(int num)
         {
             int k = 1;
 
@@ -63,7 +74,7 @@ namespace ZadanieDomowe7
                 if (num % i == 0)
                 {
                     k = i;
-                    return k;
+                    break;
                 }
             }
 
@@ -73,13 +84,15 @@ namespace ZadanieDomowe7
         static public int SumNumberDivideBySeven(int num1, int num2)
         {
             int result = 0;
-                for (int i = num1; i < num2; i++)
+
+            for (int i = num1; i < num2; i++)
+            {
+                if (i % 7 == 0)
                 {
-                    if (i % 7 == 0)
-                    {
-                        result += i;
-                    }
+                    result += i;
                 }
+            }
+
             return result;
         }
 
@@ -103,6 +116,7 @@ namespace ZadanieDomowe7
 
             return Math.Sign(num) * fibbonaci;
         }
+
         static public int FindСommonDivisorByEvklid(int num1, int num2)
         {
 
@@ -118,41 +132,47 @@ namespace ZadanieDomowe7
             return num2;
         }
 
-        public static double CubeRootByBinaryMethod(int num1)
+        public static int CubeRootByBinaryMethod(int num1)
         {
             int left = 0;
             int num = Math.Abs(num1);
             int right = Math.Abs(num1);
             int mid = 0;
+            int result = 0;
 
 
-            if (num == 1)
+            if (num == 1 || num==0)
             {
-                return(Math.Sign(num1) * num);
+                result = (Math.Sign(num1) * num);
+            }
+            else
+            {
+                while (true)
+                {
+                    mid = left + (right - left) / 2;
+                    var cube = mid * mid * mid;
+                    if (cube == num)
+                    {
+                        result= (Math.Sign(num1) * mid);
+                        break;
+                    }
+                    else if (num < cube || mid > 1290)
+                    {
+                        right = mid;
+                    }
+                    else
+                    {
+                        left = mid + 1;
+                    }
+
+                    if (left == right)
+                    {
+                        throw new ArgumentException();
+                    }
+                }
             }
 
-            while (true)
-            {
-                mid = left + (right - left) / 2;
-                var cube = mid * mid * mid;
-                if (cube == num)
-                {
-                    return (Math.Sign(num1) * mid);
-                }
-                else if (num < cube || mid > 1290)
-                {
-                    right = mid;
-                }
-                else
-                {
-                    left = mid + 1;
-                }
-
-                if (left == right)
-                {
-                    throw new ArgumentException();
-                }
-            }
+            return result;
         }
 
         public static int CountOddNumbers(int num)
@@ -199,20 +219,19 @@ namespace ZadanieDomowe7
 
             for (int i = 1; i <= num; i++)
             {
-                int sumEven = 0;
-                int sunOdd = 0;
+                int sum = 0;
                 temp = i;
 
                 while (temp != 0)
                 {
                     int current = temp % 10;
                     if (current % 2 == 0)
-                        sumEven += current;
+                        sum += current;
                     else
-                        sunOdd += current;
+                        sum -= current;
                     temp /= 10;
                 }
-                if (sumEven > sunOdd)
+                if (sum > 0)
                     numbers.Add(i);
             }
 

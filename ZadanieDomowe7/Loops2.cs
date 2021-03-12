@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ZadanieDomowe7
 {
-    public static class Loops
+    public static class Loops2
     {
         public static int Power(int num1, int num2)
         {

@@ -2,7 +2,7 @@
 
 namespace ZadanieDomowe7
 {
-    public static class VariablesHelper
+    public static class VariablesHelper2
     {
         public static double GetEquationValue(int num1, int num2)
         {

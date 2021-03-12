@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ZadanieDomowe7
 {
-    public static class ConditionStatement
+    public static class ConditionStatement2
     {
         public static int CompareTwoNumbers(int num1, int num2)
         {

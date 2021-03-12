@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ZadanieDomowe7
 {
-    public static class ArraysHelper
+    public static class ArraysHelper2
     {
         private static void ValidateArray(int[] array)
         {
@@ -80,7 +80,7 @@ namespace ZadanieDomowe7
             for (int i = 0; i < array.Length / 2; i++)
             {
                 index = array.Length - i - 1;
-                VariablesHelper.Swap(ref array[i], ref array[index]);
+                VariablesHelper2.Swap(ref array[i], ref array[index]);
             }
 
             return array;
@@ -109,7 +109,7 @@ namespace ZadanieDomowe7
 
             for (int i = 0; i < array.Length / 2; i++)
             {
-                VariablesHelper.Swap(ref array[i], ref array[j++]);
+                VariablesHelper2.Swap(ref array[i], ref array[j++]);
             }
 
             return array;

@@ -3,26 +3,26 @@ using System.Collections.Generic;
 
 namespace ZadanieDomowe7
 {
-    public static class Loops
+    public static class Loops2
     {
-        static public int Power(int num1, int num2)
+        public static int Power(int num1, int num2)
         {
             int result = 1;
 
-            if (num1 == 0)
-            {
-                result = 0;
-            }
-            else if (num2 == 0)
-            {
-                result = 1;
-            }
-            else
+            if (num1 != 0 && num2 != 0)
             {
                 for (int i = 1; i <= num2; i++)
                 {
                     result *= num1;
                 }
+            }
+            else if (num2 == 0)
+            {
+                result = 1;
+            }
+            else if (num1 == 0)
+            {
+                result = 0;
             }
 
             return result;
@@ -30,7 +30,6 @@ namespace ZadanieDomowe7
 
         public static int[] CountRemainderOfDivisionOnNumber(int num)
         {
-            int[] numbers;
             int count = 0;
 
             for (int i = num; i < 10; i++)
@@ -41,16 +40,17 @@ namespace ZadanieDomowe7
                 }
             }
 
-            numbers = new int[count];
-            count = 0;
+            int[] numbers = new int[count];
+            int count1 = 0;
             for (int i = num; i < 10; i++)
             {
                 if (i % num == 0)
                 {
-                    numbers[count] = i;
-                    ++count;
+                    numbers[count1] = i;
+                    ++count1;
                 }
             }
+
 
             return numbers;
         }
@@ -68,21 +68,21 @@ namespace ZadanieDomowe7
 
         public static int TheBiggestDivider(int num)
         {
-            int k = 1;
+            int divider = 1;
 
             for (int i = num - 1; i > 0; i--)
             {
                 if (num % i == 0)
                 {
-                    k = i;
+                    divider = i;
                     break;
                 }
             }
 
-            return k;
+            return divider;
         }
 
-        static public int SumNumberDivideBySeven(int num1, int num2)
+        public static int SumNumberDivideBySeven(int num1, int num2)
         {
             int result = 0;
 
@@ -99,11 +99,11 @@ namespace ZadanieDomowe7
 
         public static int Fibbonaci(int num)
         {
-            int num1 = 0;
+            int num1 = 1;
             int num2 = 1;
             int fibbonaci = 0;
 
-            if (num == 0 || num == 1 || num == -1)
+            if (num == 0 || num == 1)
             {
                 return num;
             }
@@ -118,7 +118,7 @@ namespace ZadanieDomowe7
             return fibbonaci;
         }
 
-        static public int FindСommonDivisorByEvklid(int num1, int num2)
+        public static int FindСommonDivisorByEvklid(int num1, int num2)
         {
 
             int temp = num1 % num2;

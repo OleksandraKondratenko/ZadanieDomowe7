@@ -1,7 +1,7 @@
 ﻿
 namespace ZadanieDomowe7
 {
-    public static class TwoDimensionalArraysHelper
+    public static class TwoDimensionalArraysHelper2
     {
         public static int FindMinElementOfArray(int[,] array)
         {

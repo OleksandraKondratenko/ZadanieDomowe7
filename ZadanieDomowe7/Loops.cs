@@ -28,14 +28,14 @@ namespace ZadanieDomowe7
             return result;
         }
 
-        static public int[] CountRemainderOfDivisionOnNumber(int num1)
+        public static int[] CountRemainderOfDivisionOnNumber(int num)
         {
             int[] numbers;
             int count = 0;
 
-            for (int i = num1; i < 10; i++)
+            for (int i = num; i < 10; i++)
             {
-                if (i % num1 == 0)
+                if (i % num == 0)
                 {
                     ++count;
                 }
@@ -43,14 +43,15 @@ namespace ZadanieDomowe7
 
             numbers = new int[count];
             count = 0;
-            for (int i = num1; i < 10; i++)
+            for (int i = num; i < 10; i++)
             {
-                if (i % num1 == 0)
+                if (i % num == 0)
                 {
                     numbers[count] = i;
                     ++count;
                 }
             }
+
             return numbers;
         }
 
@@ -58,14 +59,14 @@ namespace ZadanieDomowe7
         {
             int count = 0;
 
-            for (int i = 1; i*i < num; i++)
+            for (int i = 1; i * i < num; i++)
             {
                 ++count;
             }
             return count;
         }
 
-            public static  int TheBiggestDivider(int num)
+        public static int TheBiggestDivider(int num)
         {
             int k = 1;
 
@@ -107,14 +108,14 @@ namespace ZadanieDomowe7
                 return num;
             }
 
-            for (int i = 1; i <= Math.Abs(num) - 1; i++)
+            for (int i = 1; i <= num - 1; i++)
             {
                 fibbonaci = num1 + num2;
                 num1 = num2;
                 num2 = fibbonaci;
             }
 
-            return Math.Sign(num) * fibbonaci;
+            return fibbonaci;
         }
 
         static public int FindСommonDivisorByEvklid(int num1, int num2)
@@ -141,7 +142,7 @@ namespace ZadanieDomowe7
             int result = 0;
 
 
-            if (num == 1 || num==0)
+            if (num == 1 || num == 0)
             {
                 result = (Math.Sign(num1) * num);
             }
@@ -153,7 +154,7 @@ namespace ZadanieDomowe7
                     var cube = mid * mid * mid;
                     if (cube == num)
                     {
-                        result= (Math.Sign(num1) * mid);
+                        result = (Math.Sign(num1) * mid);
                         break;
                     }
                     else if (num < cube || mid > 1290)
@@ -213,7 +214,7 @@ namespace ZadanieDomowe7
 
         public static List<int> CompareSumOddAndEvenNumbers(int num)
         {
-            
+
             int temp = 0;
             List<int> numbers = new List<int>();
 
@@ -226,9 +227,14 @@ namespace ZadanieDomowe7
                 {
                     int current = temp % 10;
                     if (current % 2 == 0)
+                    {
                         sum += current;
+                    }
                     else
+                    {
                         sum -= current;
+                    }
+
                     temp /= 10;
                 }
                 if (sum > 0)
@@ -252,7 +258,7 @@ namespace ZadanieDomowe7
                     {
                         return true;
                     }
-                        
+
                     temp2 /= 10;
                 }
                 temp1 /= 10;

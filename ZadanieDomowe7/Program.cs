@@ -10,7 +10,7 @@ namespace ZadanieDomowe7
             int b = 6;
             int c = 1;
 
-            ConditionStatement.SortThreeNumberIncreasing(ref a, ref b, ref c);
+            ConditionStatement.SortNumbersByAscending(ref a, ref b, ref c);
             Console.WriteLine(Loops.CubeRootByBinaryMethod(27));
 
         }

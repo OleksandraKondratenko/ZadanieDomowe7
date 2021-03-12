@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZadanieDomowe7Tests", "Zada
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZadanieDomowe7XUnitTests", "ZadanieDomowe7XUnitTests\ZadanieDomowe7XUnitTests.csproj", "{E5C81537-25A6-4AC1-B940-E3ACE8D5E03F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZadanieDomowe7MSTest", "ZadanieDomowe7MSTest\ZadanieDomowe7MSTest.csproj", "{DBC9E717-FEB5-4EA0-B09E-4B7C70934A74}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{E5C81537-25A6-4AC1-B940-E3ACE8D5E03F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5C81537-25A6-4AC1-B940-E3ACE8D5E03F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5C81537-25A6-4AC1-B940-E3ACE8D5E03F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DBC9E717-FEB5-4EA0-B09E-4B7C70934A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBC9E717-FEB5-4EA0-B09E-4B7C70934A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DBC9E717-FEB5-4EA0-B09E-4B7C70934A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBC9E717-FEB5-4EA0-B09E-4B7C70934A74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ZadanieDomowe7
 {
-    public static class IfElseStatement
+    public static class ConditionStatement
     {
-        #region Exercise1
         public static int CompareTwoNumbers(int num1, int num2)
         {
             int result;
@@ -26,13 +24,11 @@ namespace ZadanieDomowe7
 
             return result;
         }
-        #endregion
 
-        #region Exercise2
         public static int DefineQuarterOnTheAxisOfReference(int x, int y)
         {
-
             int result;
+
             if (x > 0 && y > 0)
             {
                 result = 1;
@@ -52,56 +48,57 @@ namespace ZadanieDomowe7
 
             return result;
         }
-        #endregion
 
-        #region Exercise3
-        public static int[] SortThreeNumberIncreasing(int a, int b, int c)
+        public static void SortNumbersByAscending(ref int a, ref int b, ref int c)
         {
-            int[] array = new int[3];
+            int temp;
 
             if (a < b && a < c)
             {
-                array[0] = a;
-                array[1] = b < c ? b : c;
-                array[2] = b < c ? c : b;
+                temp = c;
+                c = a;
+                a = b > temp ? b : temp;
+                b = b > temp ? temp : b;
             }
             else if (b < a && b < c)
             {
-                array[0] = b;
-                array[1] = a < c ? a : c;
-                array[2] = a < c ? c : a;
+                temp = c;
+                c = b;
+                a = a > temp ? a : temp;
+                b = a > temp ? temp : a;
             }
             else
             {
-                array[0] = c;
-                array[1] = a < b ? a : b;
-                array[2] = a < b ? b : a;
+                temp = a;
+                a = temp > b ? temp : b;
+                b = temp > b ? b : temp;
+            }
+        }
+
+        static public double[] QuadraticEquation(int a, int b, int c)
+        {
+            if (a == 0)
+            {
+                throw new Exception("Квадратного уравнения не существует");
             }
 
-            return array;
-        }
-        #endregion
-
-        #region Exercise4
-        static public List<double> QuadraticEquation(int a, int b, int c)
-        {
-            List<double> result = new List<double>();
-            if (a == 0) { throw new Exception("Квадратного уравнения не существует"); }
-
+            double[] result;
             double d = b * b - 4 * a * c;
 
             if (d > 0)
             {
                 double result1 = (-b - Math.Sqrt(d)) / (2 * a);
                 double result2 = (-b + Math.Sqrt(d)) / (2 * a);
-                result.Add(Math.Round(result1,2));
-                result.Add(Math.Round(result2,2));
+                result = new double[2];
+                result[0] = (Math.Round(result1, 2));
+                result[1] = (Math.Round(result2, 2));
 
             }
             else if (d == 0)
             {
                 double result0 = -b / (2 * a);
-                result.Add(Math.Round(result0,2));
+                result = new double[1];
+                result[0] = (Math.Round(result0, 2));
             }
             else
             {
@@ -110,40 +107,38 @@ namespace ZadanieDomowe7
 
             return result;
         }
-        #endregion
 
-        #region Exercise5
-        static public string ConvertNumberToString(int number)
+        public static string ConvertNumberToString(int number)
         {
             string result;
 
-            if (number >= 100 || number < 10)
+            if (number < 100 && number >= 20)
             {
-                throw new ArgumentException();
+                int a = number / 10;
+                int b = number % 10;
+
+                if (b != 0)
+                {
+                    result = $"{Dozen(a)}{Units(b)}";
+                }
+                else
+                {
+                    result = Dozen(a);
+                }
             }
-            else if (number>=10 && number < 20)
+            else if (number >= 10 && number < 20)
             {
                 result = Teens(number);
             }
             else
             {
-                int a = number / 10;
-                int b = number % 10;
-
-                if (b == 0)
-                {
-                    result = Dozen(a);
-                }
-                else
-                {
-                    result = $"{Dozen(a)}{Units(b)}";
-                }
+                throw new ArgumentException();
             }
 
             return result;
         }
 
-        static string Units(int b)
+        private static string Units(int b)
         {
             string units;
 
@@ -184,11 +179,11 @@ namespace ZadanieDomowe7
             return units;
         }
 
-        static string Dozen(int a)
+        private static string Dozen(int num)
         {
             string dozen;
 
-            switch (a)
+            switch (num)
             {
                 case 1:
                     dozen = "десять";
@@ -222,7 +217,8 @@ namespace ZadanieDomowe7
 
             return dozen;
         }
-        static string Teens(int num)
+
+        private static string Teens(int num)
         {
             string teen = null;
             switch (num)
@@ -259,7 +255,6 @@ namespace ZadanieDomowe7
 
             return teen;
         }
-        #endregion
     }
 }
 

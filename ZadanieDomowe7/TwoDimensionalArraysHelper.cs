@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace ZadanieDomowe7
 {
     public static class TwoDimensionalArraysHelper

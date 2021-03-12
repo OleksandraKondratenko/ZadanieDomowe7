@@ -77,35 +77,32 @@ namespace ZadanieDomowe7
 
         static public double[] QuadraticEquation(int a, int b, int c)
         {
-            if (a == 0)
+            if (a != 0)
             {
-                throw new Exception("Квадратного уравнения не существует");
+                double[] result;
+                double d = b * b - 4 * a * c;
+
+                if (d > 0)
+                {
+                    double result1 = (-b - Math.Sqrt(d)) / (2 * a);
+                    double result2 = (-b + Math.Sqrt(d)) / (2 * a);
+                    result = new[] { Math.Round(result1, 2), Math.Round(result2, 2) };
+
+                }
+                else if (d == 0)
+                {
+                    double result0 = -b / (2 * a);
+                    result = new double[] { Math.Round(result0, 2) };
+                }
+                else
+                {
+                    result = null;
+                }
+
+                return result;
             }
 
-            double[] result;
-            double d = b * b - 4 * a * c;
-
-            if (d > 0)
-            {
-                double result1 = (-b - Math.Sqrt(d)) / (2 * a);
-                double result2 = (-b + Math.Sqrt(d)) / (2 * a);
-                result = new double[2];
-                result[0] = (Math.Round(result1, 2));
-                result[1] = (Math.Round(result2, 2));
-
-            }
-            else if (d == 0)
-            {
-                double result0 = -b / (2 * a);
-                result = new double[1];
-                result[0] = (Math.Round(result0, 2));
-            }
-            else
-            {
-                result = null;
-            }
-
-            return result;
+            throw new Exception("Квадратного уравнения не существует");
         }
 
         public static string ConvertNumberToString(int number)
@@ -138,11 +135,11 @@ namespace ZadanieDomowe7
             return result;
         }
 
-        private static string Units(int b)
+        private static string Units(int num)
         {
             string units;
 
-            switch (b)
+            switch (num)
             {
                 case 1:
                     units = "один";
@@ -250,7 +247,7 @@ namespace ZadanieDomowe7
                 case 19:
                     teen = "девятнадцать";
                     break;
-                default: throw new Exception("Некоректный ввод");
+                default: throw new ArgumentException("Некоректный ввод");
             }
 
             return teen;

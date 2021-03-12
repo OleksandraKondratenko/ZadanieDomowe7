@@ -52,10 +52,10 @@ namespace ZadanieDomowe7XUnitTests
         }
 
         [Theory]
-        [InlineData(5,5)]
+        [InlineData(5,8)]
         [InlineData(0,0)]
         [InlineData(1,1)]
-        [InlineData(2,1)]
+        [InlineData(2,2)]
         public void Fibbonaci_WhenTestIsPassed_ShouldBeCalculate(int num1, int expected)
         {
             int result = Loops.Fibbonaci(num1);

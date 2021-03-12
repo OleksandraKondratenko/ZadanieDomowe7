@@ -105,22 +105,11 @@ namespace ZadanieDomowe7
         public static int[] ReplaceFirstSecondPartOfNumber(int[] array)
         {
             ValidateArray(array);
-            int index = 0;
-            int temp = 0;
-
-            if (array.Length % 2 == 0)
-            {
-                index = (array.Length) / 2;
-            }
-            else
-            {
-                index = (array.Length + 1) / 2;
-            }
+            int j = (array.Length) / 2 + array.Length % 2;
 
             for (int i = 0; i < array.Length / 2; i++)
             {
-                VariablesHelper.Swap(ref array[i], ref array[index]);
-                index++;
+                VariablesHelper.Swap(ref array[i], ref array[j++]);
             }
 
             return array;

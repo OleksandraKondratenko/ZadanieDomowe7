@@ -4,16 +4,8 @@ using System.Text;
 
 namespace ZadanieDomowe7
 {
-    public static class ArraysHelper2
+    public static class ArraysHelper
     {
-        private static void ValidateArray(int[] array)
-        {
-            if (array == null || array.Length == 0)
-            {
-                throw new ArgumentException("You are stupid");
-            }
-        }
-
         public static int FindMinElementOfArray(int[] array)
         {
             return array[FindIndexMinElementOfArray(array)];
@@ -29,7 +21,7 @@ namespace ZadanieDomowe7
             ValidateArray(array);
             int minIndex = 0;
 
-            for (int i = 1; i < array.Length - 1; i++)
+            for (int i = 1; i < array.Length ; i++)
             {
                 if (array[minIndex] > array[i])
                 {
@@ -80,7 +72,7 @@ namespace ZadanieDomowe7
             for (int i = 0; i < array.Length / 2; i++)
             {
                 index = array.Length - i - 1;
-                VariablesHelper2.Swap(ref array[i], ref array[index]);
+                VariablesHelper.Swap(ref array[i], ref array[index]);
             }
 
             return array;
@@ -95,21 +87,21 @@ namespace ZadanieDomowe7
             {
                 if (array[i] % 2 == 1)
                 {
-                    count++;
+                    ++count;
                 }
             }
 
             return count;
         }
 
-        public static int[] ReplaceFirstSecondPartOfNumber(int[] array)
+        public static int[] SwapArrayParts(int[] array)
         {
             ValidateArray(array);
             int j = (array.Length) / 2 + array.Length % 2;
 
             for (int i = 0; i < array.Length / 2; i++)
             {
-                VariablesHelper2.Swap(ref array[i], ref array[j++]);
+                VariablesHelper.Swap(ref array[i], ref array[j++]);
             }
 
             return array;
@@ -118,7 +110,6 @@ namespace ZadanieDomowe7
         public static int[] SelectSort(int[] array)
         {
             ValidateArray(array);
-            int temp;
             int current;
             int index;
 
@@ -128,9 +119,7 @@ namespace ZadanieDomowe7
                 index = i;
                 while (index > 0 && array[index - 1] > current)
                 {
-                    temp = array[index - 1];
-                    array[index - 1] = current;
-                    array[index] = temp;
+                    VariablesHelper.Swap(ref array[index - 1], ref array[index]);
                     index--;
                 }
             }
@@ -141,7 +130,6 @@ namespace ZadanieDomowe7
         public static int[] InsertSort(int[] array)
         {
             ValidateArray(array);
-            int temp;
             int max;
 
             for (int i = 0; i < array.Length - 1; i++)
@@ -154,12 +142,17 @@ namespace ZadanieDomowe7
                         max = index;
                     }
                 }
-                temp = array[max];
-                array[max] = array[i];
-                array[i] = temp;
+                VariablesHelper.Swap(ref array[max], ref array[i]);
             }
 
             return array;
+        }
+        private static void ValidateArray(int[] array)
+        {
+            if (array == null || array.Length == 0)
+            {
+                throw new ArgumentException("You are stupid");
+            }
         }
     }
 }

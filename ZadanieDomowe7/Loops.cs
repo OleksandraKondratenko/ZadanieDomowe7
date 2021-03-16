@@ -1,26 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace ZadanieDomowe7
 {
-    public static class Loops2
+    public static class Loops
     {
-        public static int Power(int num1, int num2)
+        public static int Power(int num, int pofwer)
         {
             int result = 1;
 
-            if (num1 != 0 && num2 != 0)
+            if (num != 0 && pofwer != 0)
             {
-                for (int i = 1; i <= num2; i++)
+                for (int i = 1; i <= pofwer; i++)
                 {
-                    result *= num1;
+                    result *= num;
                 }
             }
-            else if (num2 == 0)
+            else if (pofwer == 0)
             {
                 result = 1;
             }
-            else if (num1 == 0)
+            else if (num == 0)
             {
                 result = 0;
             }
@@ -41,13 +43,13 @@ namespace ZadanieDomowe7
             }
 
             int[] numbers = new int[count];
-            int count1 = 0;
+            int j = 0;
             for (int i = num; i < 10; i++)
             {
                 if (i % num == 0)
                 {
-                    numbers[count1] = i;
-                    ++count1;
+                    numbers[j] = i;
+                    ++j;
                 }
             }
 
@@ -59,14 +61,19 @@ namespace ZadanieDomowe7
         {
             int count = 0;
 
-            for (int i = 1; i * i < num; i++)
+            for (int i = num / 2; i >= 1; i--)
             {
-                ++count;
+                if (i * i < num)
+                {
+                    count = i;
+                    break;
+                }
             }
+
             return count;
         }
 
-        public static int TheBiggestDivider(int num)
+        public static int GetBiggestDivider(int num)
         {
             int divider = 1;
 
@@ -120,7 +127,6 @@ namespace ZadanieDomowe7
 
         public static int FindСommonDivisorByEvklid(int num1, int num2)
         {
-
             int temp = num1 % num2;
 
             while (temp != 0)
@@ -133,18 +139,17 @@ namespace ZadanieDomowe7
             return num2;
         }
 
-        public static int CubeRootByBinaryMethod(int num1)
+        public static int GetCubeRootByBinaryMethod(int num)
         {
             int left = 0;
-            int num = Math.Abs(num1);
-            int right = Math.Abs(num1);
+            int numAbs = Math.Abs(num);
+            int right = Math.Abs(num);
             int mid = 0;
             int result = 0;
 
-
-            if (num == 1 || num == 0)
+            if (numAbs == 1 || numAbs == 0)
             {
-                result = (Math.Sign(num1) * num);
+                result = (Math.Sign(num) * numAbs);
             }
             else
             {
@@ -152,12 +157,12 @@ namespace ZadanieDomowe7
                 {
                     mid = left + (right - left) / 2;
                     var cube = mid * mid * mid;
-                    if (cube == num)
+                    if (cube == numAbs)
                     {
-                        result = (Math.Sign(num1) * mid);
+                        result = (Math.Sign(num) * mid);
                         break;
                     }
-                    else if (num < cube || mid > 1290)
+                    else if (numAbs < cube || mid > 1290)
                     {
                         right = mid;
                     }
@@ -186,8 +191,9 @@ namespace ZadanieDomowe7
                 temp = num > 10 ? num % 10 : num;
                 if (temp % 2 != 0)
                 {
-                    count++;
+                    ++count;
                 }
+
                 num /= 10;
             }
 
@@ -198,23 +204,22 @@ namespace ZadanieDomowe7
         {
             int result;
             int temp;
-            string stNumber = null;
+            StringBuilder stNumber = new StringBuilder();
 
             while (num != 0)
             {
                 temp = num % 10;
-                stNumber += temp.ToString();
+                stNumber.Append(temp.ToString());
                 num /= 10;
             }
 
-            result = Convert.ToInt32(stNumber);
+            result = Convert.ToInt32(stNumber.ToString());
 
             return result;
         }
 
-        public static List<int> CompareSumOddAndEvenNumbers(int num)
+        public static IEnumerable<int> CompareSumOddAndEvenNumbers(int num)//IEnamereble
         {
-
             int temp = 0;
             List<int> numbers = new List<int>();
 
@@ -234,37 +239,28 @@ namespace ZadanieDomowe7
                     {
                         sum -= current;
                     }
-
                     temp /= 10;
                 }
                 if (sum > 0)
+                {
                     numbers.Add(i);
+                }
             }
 
             return numbers;
         }
 
-
-        public static bool CompareDigitInNumbers(int num1, int num2)
+        public static bool CompareDigitInNumbers(int num1, int num2)//string
         {
-            int temp1 = num1;
-
-            while (temp1 != 0)
+            string stNum1 = num1.ToString();
+            string stNum2 = num2.ToString();
+            var result = stNum1.Intersect(stNum2);
+            if (result == null)
             {
-                int temp2 = num2;
-                while (temp2 != 0)
-                {
-                    if (temp1 % 10 == temp2 % 10)
-                    {
-                        return true;
-                    }
-
-                    temp2 /= 10;
-                }
-                temp1 /= 10;
+                return false;
             }
 
-            return false;
+            return true;
         }
     }
 }

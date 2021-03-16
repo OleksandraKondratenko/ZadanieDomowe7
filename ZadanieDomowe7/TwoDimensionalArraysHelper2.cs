@@ -5,38 +5,12 @@ namespace ZadanieDomowe7
     {
         public static int FindMinElementOfArray(int[,] array)
         {
-            int min = array[0, 0];
-
-            for (int i = 0; i < array.GetLength(0); i++)
-            {
-                for (int j = 0; j < array.GetLength(1); j++)
-                {
-                    if (min > array[i, j])
-                    {
-                        min = array[i, j];
-                    }
-                }
-            }
-
-            return min;
+            return array[FindIndexMinElementOfArray(array).Item1, FindIndexMinElementOfArray(array).Item2];
         }
 
         public static int FindMaxElementOfArray(int[,] array)
         {
-            int max = array[0, 0];
-
-            for (int i = 0; i < array.GetLength(0); i++)
-            {
-                for (int j = 0; j < array.GetLength(1); j++)
-                {
-                    if (max < array[i, j])
-                    {
-                        max = array[i, j];
-                    }
-                }
-            }
-
-            return max;
+            return array[FindIndexMaxElementOfArray(array).Item1, FindIndexMaxElementOfArray(array).Item2];
         }
 
         public static (int, int) FindIndexMinElementOfArray(int[,] array)
@@ -82,16 +56,16 @@ namespace ZadanieDomowe7
             int length = array.GetLength(0)-1;
             int wide = array.GetLength(1) - 1;
 
-            for (int i = 0; i <=length; i++)
+            for (int i = 0; i <= length; i++)
             {
                 for (int j = 0; j <= wide; j++)
                 {
                     if ((i <= 0 || array[i, j] >= array[i - 1, j])
                         && (i >= length || array[i, j] >= array[i + 1, j])
-                        && (j <= 0 || array[i, j] >= array[i, j-1])
-                        && (j >= wide || array[i, j] >= array[i, j+1]))
+                        && (j <= 0 || array[i, j] >= array[i, j - 1])
+                        && (j >= wide || array[i, j] >= array[i, j + 1]))
                     {
-                        count++;
+                        ++count;
                     }
                 }
             }
@@ -99,19 +73,19 @@ namespace ZadanieDomowe7
             return count;
         }
 
-        public static int[,] MirrorViewOfArray(int[,] array)
+        public static int[,] GetMirrorViewOfArray(int[,] array)
         {
-            var arrayNew = new int[array.GetLength(1), array.GetLength(0)];
+            var mirroredArray = new int[array.GetLength(1), array.GetLength(0)];
 
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    arrayNew[j, i] = array[i, j];
+                    mirroredArray[j, i] = array[i, j];
                 }
             }
 
-            return arrayNew;
+            return mirroredArray;
         }
     }
 }

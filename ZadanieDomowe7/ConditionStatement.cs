@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ZadanieDomowe7
 {
-    public static class ConditionStatement2
+    public static class ConditionStatement
     {
         public static int CompareTwoNumbers(int num1, int num2)
         {
@@ -25,25 +25,31 @@ namespace ZadanieDomowe7
             return result;
         }
 
-        public static int DefineQuarterOnTheAxisOfReference(int x, int y)
+        public static int GetQuarterOnTheAxisOfReference(int x, int y)
         {
             int result;
 
-            if (x > 0 && y > 0)
+            if (x > 0)
             {
-                result = 1;
-            }
-            else if (x < 0 && y > 0)
-            {
-                result = 2;
-            }
-            else if (x < 0 && y < 0)
-            {
-                result = 3;
+                if (y > 0)
+                {
+                    result = 1;
+                }
+                else
+                {
+                    result = 4;
+                }
             }
             else
             {
-                result = 4;
+                if (y > 0)
+                {
+                    result = 2;
+                }
+                else
+                {
+                    result = 3;
+                }
             }
 
             return result;
@@ -51,27 +57,17 @@ namespace ZadanieDomowe7
 
         public static void SortNumbersByAscending(ref int a, ref int b, ref int c)
         {
-            int temp;
-
-            if (a < b && a < c)
+            if (a > b)
             {
-                temp = c;
-                c = a;
-                a = b > temp ? b : temp;
-                b = b > temp ? temp : b;
+                VariablesHelper.Swap(ref a, ref b);
             }
-            else if (b < a && b < c)
+            if (a > c)
             {
-                temp = c;
-                c = b;
-                a = a > temp ? a : temp;
-                b = a > temp ? temp : a;
+                VariablesHelper.Swap(ref a, ref c);
             }
-            else
+            if (b > c)
             {
-                temp = a;
-                a = temp > b ? temp : b;
-                b = temp > b ? b : temp;
+                VariablesHelper.Swap(ref b, ref c);
             }
         }
 
@@ -87,7 +83,6 @@ namespace ZadanieDomowe7
                     double result1 = (-b - Math.Sqrt(d)) / (2 * a);
                     double result2 = (-b + Math.Sqrt(d)) / (2 * a);
                     result = new[] { Math.Round(result1, 2), Math.Round(result2, 2) };
-
                 }
                 else if (d == 0)
                 {
@@ -102,7 +97,7 @@ namespace ZadanieDomowe7
                 return result;
             }
 
-            throw new Exception("Квадратного уравнения не существует");
+            throw new ArgumentException("An equation doesn`t exist");
         }
 
         public static string ConvertNumberToString(int number)

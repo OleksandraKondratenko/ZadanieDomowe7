@@ -2,13 +2,13 @@
 
 namespace ZadanieDomowe7
 {
-    public static class VariablesHelper2
+    public static class VariablesHelper
     {
-        public static double GetEquationValue(int num1, int num2)
+        public static double GetEquationValue(int a, int b)
         {
-            if (num1 != num2)
+            if (a != b)
             {
-                return Math.Round((double)(5 * num1 + num2 * num2) / (double)(num2 - num1), 2);
+                return Math.Round((double)(5 * a + b * b) / (double)(b - a), 2);
             }
 
             throw new DivideByZeroException();
